@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EDIT DETAILS HERE</title>
+</head>
+<body>
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Edit Categories Here.....</h4><br><br>
+<!--                  <p class="card-description">-->
+<!--                    Basic form elements-->
+<!--                  </p>-->
+                  <form class="forms-sample" method="post" action="{% url 'update_category' cid=data.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Category Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1"  name="cname" value="{{data.Category_Name}}" placeholder="Name" fdprocessedid="y2o5z1b">
+                    </div>
+                      <div class="form-group">
+                      <label for="exampleInputName1">Upload Category Image</label>
+                          <img src="{{data.Category_Image.url}}">
+                      <input type="file" class="form-control"  name="cimage" placeholder="Name" fdprocessedid="y2o5z1b">
+                    </div>
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputEmail3">Email address</label>-->
+<!--                      <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" fdprocessedid="wc7tcg">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputPassword4">Password</label>-->
+<!--                      <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password" fdprocessedid="924cy9">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleSelectGender">Gender</label>-->
+<!--                        <select class="form-control" id="exampleSelectGender" fdprocessedid="5bpp8">-->
+<!--                          <option>Male</option>-->
+<!--                          <option>Female</option>-->
+<!--                        </select>-->
+<!--                      </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label>File upload</label>-->
+<!--                      <input type="file" name="img[]" class="file-upload-default">-->
+<!--                      <div class="input-group col-xs-12">-->
+<!--                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" fdprocessedid="ghjukhlb">-->
+<!--                        <span class="input-group-append">-->
+<!--                          <button class="file-upload-browse btn btn-primary" type="button" fdprocessedid="lg14ub">Upload</button>-->
+<!--                        </span>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputCity1">City</label>-->
+<!--                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location" fdprocessedid="ienwc">-->
+<!--                    </div>-->
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Description</label>
+                      <textarea class="form-control"   name="description" id="exampleTextarea1" rows="4">{{data.Description}}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2" fdprocessedid="tvx093">Submit</button>
+                    <button class="btn btn-light" fdprocessedid="tx3o39">Cancel</button>
+                  </form>
+                </div>
+              </div>
+
+
+</body>
+</html>
+{% endblock %}

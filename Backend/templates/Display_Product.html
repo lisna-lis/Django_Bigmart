@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Categories</title>
+</head>
+<body>
+<div class="table-responsive pt-3">
+                    <table class="table table-light" >
+                      <thead>
+                        <tr>
+
+                          <th>
+                            CATEGORY
+                          </th>
+                            <th>
+                                PRODUCT NAME
+                            </th>
+                          <th>
+                            PRODUCT IMAGE
+                          </th>
+                          <th>
+                            PRICE
+                          </th>
+                            <th>
+                                DESCRIPTION
+                            </th>
+                        </tr>
+                      </thead>
+                    {% for i in pdata %}
+                        <tr>
+                            <td>{{i.Category}}</td>
+                            <td>{{i.Product_name}}</td>
+                            <td>
+                                <img src="{{i.Product_Image.url}}">
+                            </td>
+                            <td>{{i.Price}}</td>
+                            <td>{{i.Description}}</td>
+                            <td>
+                                <a href="{% url 'edit_product' pid=i.id %}">
+                                    <button type="button" class="btn btn-outline-secondary btn-icon-text" style="background-color:rgb(236, 55, 252);color:white">
+                          Edit
+                          <i class="mdi mdi-file-check btn-icon-append"></i>
+                        </button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'delete_product' pid=i.id %}">
+                                    <button type="button" class="btn btn-outline-secondary btn-lg " style="background-color:rgb(236, 55, 252);color:white;">Delete</button>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                  </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+{% for i in messages %}
+{% if i.tags == 'warning' %}
+<script>
+    swal('{{i}}','','warning')
+</script>
+
+{% elif i.tags == 'error' %}
+<script>
+    swal('{{i}}','','error')
+</script>
+
+{% elif i.tags == 'info' %}
+<script>
+    swal('{{i}}','','info')
+</script>
+
+{% else %}
+<script>
+    swal('{{i}}','','success')
+</script>
+
+{% endif %}
+{% endfor %}
+{% endif %}
+
+</body>
+</html>
+{% endblock %}

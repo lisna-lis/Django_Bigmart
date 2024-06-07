@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Categories</title>
+</head>
+<body>
+<div class="table-responsive pt-3">
+                    <table class="table table-light" >
+                      <thead>
+                        <tr>
+
+                          <th>Contact ID</th>
+                          <th>Name</th>
+                          <th>Email ID</th>
+                          <th>Subject</th>
+                          <th>Message</th>
+                          <th>Mobile No</th>
+                          <th>Option</th>
+
+                          <tr/>
+                      </thead>
+                    {% for i in data %}
+                        <tr>
+                            <td>{{i.id}}</td>
+                            <td>{{i.Name}}</td>
+                            <td>{{i.Email}}</td>
+                            <td>{{i.Subject}}</td>
+                            <td>{{i.Message}}</td>
+                            <td>{{i.Mobile}}</td>
+                            <td>
+                                <a href="{% url 'delete_contact' conid=i.id%}">
+                                <button>Delete</button>
+                                    </a>
+                            </td>
+                       <tr/>
+                        {% endfor %}
+                    </table>
+                  </div>
+
+</body>
+</html>
+{% endblock %}
